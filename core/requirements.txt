@@ -1,0 +1,7 @@
+# initial ...
+pandas
+
+# rasa core
+rasa==2.2.9
+
+# others ...

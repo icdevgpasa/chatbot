@@ -1,0 +1,107 @@
+version: "2.0"
+
+stories:
+  - story: happy path
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: mood_great
+      - action: utter_happy
+
+  - story: sad path 1
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: mood_unhappy
+      - action: utter_cheer_up
+      - action: utter_did_that_help
+      - intent: affirm
+      - action: utter_happy
+
+  - story: sad path 2
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: mood_unhappy
+      - action: utter_cheer_up
+      - action: utter_did_that_help
+      - intent: deny
+      - action: utter_goodbye
+
+  # Added By Salem ...
+  - story: ask diet questions
+    steps:
+      - intent: ask_eat_healthy
+      - action: utter_diet_info
+
+  - story: ask stress questions
+    steps:
+      - intent: ask_lower_stress
+      - action: utter_stress_info
+
+  - story: ask exercise
+    steps:
+      - intent: ask_exercise
+      - action: utter_exercise_info
+
+  - story: survey happy path
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: affirm
+      - action: health_form
+      - active_loop: health_form
+      - active_loop: null
+      - action: utter_slots_values
+      - intent: thankyou
+      - action: utter_no_worries
+      - action: utter_goodbye
+
+  # ## survey stop
+  # * greet
+  #     - utter_greet
+  # * affirm
+  #     - health_form
+  #     - form{"name": "health_form"}
+  # * out_of_scope
+  #     - utter_ask_continue
+  # * deny
+  #     - action_deactivate_form
+  #     - form{"name": null}
+  #     - utter_goodbye
+
+  # ## survey continue
+  # * greet
+  #     - utter_greet
+  # * affirm
+  #     - health_form
+  #     - form{"name": "health_form"}
+  # * out_of_scope
+  #     - utter_ask_continue
+  # * affirm
+  #     - health_form
+  #     - form{"name": null}
+  #     - utter_slots_values
+
+  # ## no survey
+  # * greet
+  #     - utter_greet
+  # * deny
+  #     - utter_goodbye
+
+  # ## ask health questions form
+  # * greet
+  #     - utter_greet
+  # * affirm
+  #     - health_form
+  #     - form{"name": "health_form"}
+  # * ask_exercise
+  #     - utter_exercise_info
+  #     - health_form
+  #     - form{"name": null}
+  #     - utter_goodbye
+
+  - story: interactive_story_1
+    steps:
+      - intent: ask_eat_healthy
+      - action: utter_diet_info
