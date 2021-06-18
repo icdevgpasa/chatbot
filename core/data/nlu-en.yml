@@ -1,0 +1,227 @@
+version: "2.0"
+nlu:
+  - intent: greet
+    examples: |
+      - hey
+      - hello
+      - hi
+      - hello there
+      - good morning
+      - good evening
+      - moin
+      - hey there
+      - let's go
+      - hey dude
+      - goodmorning
+      - goodevening
+      - good afternoon
+  - intent: goodbye
+    examples: |
+      - good afternoon
+      - cu
+      - good by
+      - cee you later
+      - good night
+      - bye
+      - goodbye
+      - have a nice day
+      - see you around
+      - bye bye
+      - see you later
+  - intent: affirm
+    examples: |
+      - yes
+      - y
+      - indeed
+      - of course
+      - that sounds good
+      - correct
+  - intent: deny
+    examples: |
+      - no
+      - n
+      - never
+      - I don't think so
+      - don't like that
+      - no way
+      - not really
+  - intent: mood_great
+    examples: |
+      - perfect
+      - great
+      - amazing
+      - feeling like a king
+      - wonderful
+      - I am feeling very good
+      - I am great
+      - I am amazing
+      - I am going to save the world
+      - super stoked
+      - extremely good
+      - so so perfect
+      - so good
+      - so perfect
+  - intent: mood_unhappy
+    examples: |
+      - my day was horrible
+      - I am sad
+      - I don't feel very well
+      - I am disappointed
+      - super sad
+      - I'm so sad
+      - sad
+      - very sad
+      - unhappy
+      - not good
+      - not very good
+      - extremly sad
+      - so saad
+      - so sad
+
+  - intent: bot_challenge
+    examples: |
+      - are you a bot?
+      - are you a human?
+      - am I talking to a bot?
+      - am I talking to a human?
+
+  - intent: insults
+    examples: |
+      - You act funny
+      - This is bullshit
+      - You are hardly competent
+      - You are incompetent
+      - You are dumb
+      - Shut up
+      - You are such an idiot
+      - You are a dork
+      - You are ugly
+      - You are an asshole
+      - Insults
+      - loon
+      - douche
+      - jerk
+      - dunce
+      - wanker
+      - arsehole
+      - stupid
+      - Pillock
+      - Billy no mates
+      - minger
+      - dumb
+      - Idiot
+      - Asshole
+      - Spazz
+      - pervert
+      - bitch
+      - Ass
+      - faggot
+      - knob
+      - tosser
+      - twit
+      - slag
+      - chav
+      - nut job
+      - biggot
+      - fool
+      - lunatic
+      - moron
+      - nitwit
+      - racist
+      - wacko
+      - troll
+
+  - intent: religion
+    examples: |
+      - Religion
+      - prayer
+      - pray
+      - devout
+      - Jesus
+      - God
+      - Christian
+      - Christianity
+      - Catholic
+      - Judaism
+      - Jewish
+      - Hindu
+      - Hinduism
+      - Buddhism
+      - Buddhist
+      - Hinduist
+      - Islam
+      - Islamic
+      - Christ
+      - Semetic
+      - Pope
+      - Allah
+      - Buddah
+      - Holy Trinity
+      - Catholicism
+      - Muslim
+
+  - intent: drugs
+    examples: |
+      - High as a kite
+      - Hash brownie
+      - Weed brownie
+      - Junkie
+      - Cocaine
+      - Meth
+      - Methamphetamine
+      - Crystal
+      - Mushrooms
+      - Spacecake
+      - Spacecookies
+      - Speed
+      - Stoned out of my mind
+      - Heroin
+      - LSD
+      - MDMA
+      - Opium
+      - Ritalin
+      - Stoner
+
+  - intent: hateSpeech
+    examples: |
+      - nigger
+      - nigga
+      - niglet
+      - Niggah
+      - Niggaz
+      - nignog
+      - Jim Crow
+      - Lesbo
+      - Towelhead
+      - Towel head
+      - Ching Chong
+      - Chink
+      - White Power
+      - KKK
+      - Klu Klux Klan
+      - Aryan Supremacy
+      - Faggot
+      - Neonazi
+      - Heil Hitler
+      - Heilhitler
+      - Neo Nazi
+      - White power
+      - White supremacy
+      - Zyklon B
+
+  - intent: suicide
+    examples: |       
+      - suicide
+      - suicidal
+      - Kill myself
+      - I want to die
+      - Cut wrists
+      - Jump off a bridge
+      - End my life
+      - I want to end my life
+      - Kill me
+      - Kill self
+      - suicidal
+      - kill myself
+      - self-immolation
+      - Seppuku
