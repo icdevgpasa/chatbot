@@ -130,10 +130,14 @@ def hello():
 def parse():
     try:
         endpoint = '/parse'
-        question = request.get_json().get('text', '')
         res = {}
 
-        messages_ = proccess_data([question])
+        messages_ = proccess_data([
+            {
+                'text': request.get_json().get('text', ''),
+                'id': request.get_json().get('id', ''),
+            }
+        ])
         messages_hash = messages_[0].get('hash', '')
         res_ = col_cache.find_one(
             {'hash': messages_hash},
@@ -147,6 +151,7 @@ def parse():
             return success_handle(endpoint, {**res_, 'DB_STATUS': True})
 
         # ...
+        question =  request.get_json().get('text', '')
         if question:
             res = ask_rasa(question)
             to_db = {**messages_[0], **res}
