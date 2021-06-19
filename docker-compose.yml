@@ -5,8 +5,11 @@ services:
         ports:
             - "5005:5005"
         volumes:
-            - ./core/models:/src/models
-            - ./core/out.log:/src/out.log
+            # - core/:/src
+            - core/out.log:/src/out.log
+            - core/models/:/src/models/
+        networks:
+            - stop-hate
 
     bot_backend_service:
         build: backend
@@ -18,3 +21,10 @@ services:
             - ./backend:/app
         environment:
             FLASK_ENV: development
+            RASA_URL: 'http://bot_core_ai_service:5005'
+        networks:
+            - stop-hate
+
+networks:
+    stop-hate:
+        driver: bridge
