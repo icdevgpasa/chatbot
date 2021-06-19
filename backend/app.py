@@ -73,6 +73,12 @@ def proccess_data(data=[]):
         logging.error(e)
         return data
 
+def save_to_cache(data):
+    try:
+        col_cache.insert_one(data)
+    except Exception as e:
+        logging.info('save_to_cache()')
+        logging.info(e)
 
 # ROUTES .....
 def ask_rasa(question):
@@ -182,7 +188,7 @@ def handle_messages():
                 if res_.get('status', False):
                     to_db = {**data, **res_}
                     res_finall.append(copy.deepcopy(to_db))
-                    col_cache.insert_one(to_db)
+                    save_to_cache(to_db)
 
         return success_handle(endpoint, {'messages': res_finall})
     except Exception as e:
