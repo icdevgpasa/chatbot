@@ -89,6 +89,7 @@ def ask_rasa(question):
         # url = f"http://bot_stop_hate_core_ai:5006/model/parse"
         # url = f"{os.getenv('RASA_URL')}/model/parse"
         url = 'http://hejt.ml/rasa/model/parse'
+        url = 'https://hejt.ml/rasa/model/parse'
 
         res = requests.post(
             url,
