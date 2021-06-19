@@ -1,0 +1,20 @@
+version: "3"
+services:
+    bot_core_ai_service:
+        build: core
+        ports:
+            - "5005:5005"
+        volumes:
+            - ./core/models:/src/models
+            - ./core/out.log:/src/out.log
+
+    bot_backend_service:
+        build: backend
+        ports:
+            - "5000:5000"
+        depends_on:
+            - bot_core_ai_service
+        volumes:
+            - ./backend:/app
+        environment:
+            FLASK_ENV: development
