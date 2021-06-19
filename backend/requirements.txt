@@ -1,2 +1,4 @@
 flask
 requests
+pymongo
+Flask-PyMongo==2.2.0
