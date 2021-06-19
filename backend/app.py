@@ -8,7 +8,8 @@ import os
 from os import environ
 import hashlib
 import pymongo
-from flask_pymongo import PyMongo
+import copy
+
 
 app = Flask(__name__)
 
@@ -57,15 +58,19 @@ def proccess_data(data=[]):
     try:
         res = []
         for d in data:
-            d = d.lower().lstrip().rstrip()
-            res.append({
-                'message': d,
-                'hash': hashlib.md5(d.encode()).hexdigest()
-            })
+            message = d.get('text', '').lower().lstrip().rstrip()
+            message = ' '.join(message.split())
+            if message:
+                res.append({
+                    'text': d.get('text', ''),
+                    'id': d.get('id', ''),
+                    'message': message,
+                    'hash': hashlib.md5(message.encode()).hexdigest()
+                })
         return res
     except Exception as e:
         logging.error('proccess_data(...)')
-        logging.error(res)
+        logging.error(e)
         return data
 
 
@@ -74,7 +79,7 @@ def ask_rasa(question):
     try:
         # url = 'http://localhost:5006/model/parse'  # @info : endpoint for another container
         # url = f"http://bot_stop_hate_core_ai:5006/model/parse"
-        url = f"{os.getenv('RASA_URL')}/model/parse"
+        # url = f"{os.getenv('RASA_URL')}/model/parse"
         url = 'http://hejt.ml/rasa/model/parse'
 
         res = requests.post(
@@ -132,14 +137,14 @@ def parse():
         messages_hash = messages_[0].get('hash', '')
         res_ = col_cache.find_one(
             {'hash': messages_hash},
-            {'_id':0}
+            {'_id': 0}
         )
 
         # ...
         if res_:
             logging.info('RESPONSE FROM DB')
             logging.info(res_)
-            return success_handle(endpoint, {**res_, 'DB_STATUS':True})
+            return success_handle(endpoint, {**res_, 'DB_STATUS': True})
 
         # ...
         if question:
@@ -163,15 +168,18 @@ def handle_messages():
         messages = request.get_json().get('messages', [])
 
         messages_ = proccess_data(messages)
+        res_finall = []
+
         for data in messages_:
             question = data.get('message', '')
             if question:
                 res_ = ask_rasa(question)
                 if res_.get('status', False):
                     to_db = {**data, **res_}
+                    res_finall.append(copy.deepcopy(to_db))
                     col_cache.insert_one(to_db)
 
-        return success_handle(endpoint, {'messages': messages_})
+        return success_handle(endpoint, {'messages': res_finall})
     except Exception as e:
         return error_handle(endpoint, str(e), HTTP_BAD_REQUEST_NUMBER)
 
