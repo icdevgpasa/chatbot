@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # ...
-SERVICE_IMAGE="stop_hate_ai_image"
-SERVICE_CONTAINER="stop_hate_ai"
+SERVICE_IMAGE="bot_stop_hate_core_ai_image"
+SERVICE_CONTAINER="bot_stop_hate_core_ai"
 PORT=5005
 
 # ...

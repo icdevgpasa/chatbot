@@ -1,5 +1,6 @@
 # initial ...
 pandas
+numpy
 
 # rasa core
 rasa==2.2.9
