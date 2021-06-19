@@ -9,9 +9,11 @@ from os import environ
 import hashlib
 import pymongo
 import copy
+from flask_cors import CORS
 
 
 app = Flask(__name__)
+CORS(app)
 
 HTTP_BAD_REQUEST_NUMBER = 400
 
