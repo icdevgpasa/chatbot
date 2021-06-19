@@ -1,27 +1,49 @@
 version: "3"
 services:
-    bot_core_ai_service:
-        build: core
-        ports:
-            - "5005:5005"
-        volumes:
-            # - core/:/src
-            - core/out.log:/src/out.log
-            - core/models/:/src/models/
-        networks:
-            - stop-hate
+    # bot_core_ai_service:
+    #     build: core
+    #     ports:
+    #         - "5005:5005"
+    #     volumes:
+    #         # - ./core/models:/src/models/
+    #         - ./core/out.log:/src/out.log
+    #     networks:
+    #         - stop-hate
 
     bot_backend_service:
         build: backend
         ports:
             - "5000:5000"
         depends_on:
-            - bot_core_ai_service
+            - mongodb
+        #     - bot_core_ai_service
         volumes:
             - ./backend:/app
+        links:
+            - mongodb
         environment:
             FLASK_ENV: development
-            RASA_URL: 'http://bot_core_ai_service:5005'
+            # RASA_URL: 'http://bot_core_ai_service:5005'
+            RASA_URL: 'https://hejt.ml/rasa'
+            DB_URI: 'mongodb://admin:KDSLAJPLAFBLKUJG@mongodb:27017/admin?authSource=admin'
+            MONGODB_HOSTNAME: mongodb
+            MONGODB_PORT: 27017
+            MONGODB_USERNAME: admin
+            MONGODB_PASSWORD: KDSLAJPLAFBLKUJG
+        networks:
+            - stop-hate
+
+    mongodb:
+        # user: "1000:1000"
+        # image: mongo:4.2.14-bionic
+        image: mongo
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: admin
+            MONGO_INITDB_ROOT_PASSWORD: KDSLAJPLAFBLKUJG
+        ports:
+            - 27017:27017
+        volumes:
+            - ./volume_mongo:/data/db
         networks:
             - stop-hate
 

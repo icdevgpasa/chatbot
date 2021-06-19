@@ -29,6 +29,6 @@ docker stop $SERVICE_CONTAINER || true && docker rm $SERVICE_CONTAINER || true
 echo ">> BUILD IMAGE <<"
 docker build -t $SERVICE_IMAGE --no-cache .
 echo ">> RUN CONTAINER <<"
-docker run --name $SERVICE_CONTAINER -p $PORT_OUT:$PORT_IN $SERVICE_IMAGE
-# docker run --name $SERVICE_CONTAINER -d -p $PORT_OUT:$PORT_IN $SERVICE_IMAGE
+# docker run --name $SERVICE_CONTAINER -p $PORT_OUT:$PORT_IN $SERVICE_IMAGE
+docker run --name $SERVICE_CONTAINER -d -p $PORT_OUT:$PORT_IN $SERVICE_IMAGE
 echo "========================== END ==============================="
