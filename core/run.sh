@@ -3,7 +3,8 @@
 # ...
 SERVICE_IMAGE="bot_stop_hate_core_ai_image"
 SERVICE_CONTAINER="bot_stop_hate_core_ai"
-PORT=5005
+PORT_IN=5005
+PORT_OUT=5006
 
 # ...
 clear
@@ -28,5 +29,6 @@ docker stop $SERVICE_CONTAINER || true && docker rm $SERVICE_CONTAINER || true
 echo ">> BUILD IMAGE <<"
 docker build -t $SERVICE_IMAGE --no-cache .
 echo ">> RUN CONTAINER <<"
-docker run --name $SERVICE_CONTAINER -d -p $PORT:$PORT $SERVICE_IMAGE
+docker run --name $SERVICE_CONTAINER -p $PORT_OUT:$PORT_IN $SERVICE_IMAGE
+# docker run --name $SERVICE_CONTAINER -d -p $PORT_OUT:$PORT_IN $SERVICE_IMAGE
 echo "========================== END ==============================="

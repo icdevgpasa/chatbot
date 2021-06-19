@@ -1,7 +1,7 @@
 # Configuration for Rasa NLU.
 # https://rasa.com/docs/rasa/nlu/components/
 # https://github.com/RasaHQ/rasa-nlu-examples
-language: en
+language: pl
 
 pipeline:
 # No configuration for the NLU pipeline was provided. The following default pipeline was used to train your model.

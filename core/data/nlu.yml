@@ -7,7 +7,11 @@ nlu:
       - niesamowity
       - czuć się jak król
       - wspaniale
-      - Czuję się bardzo dobrze
+      - Czuję się bardzo dobrze ale ty jesteś [chujem](hate_ent)
+      - Czuję się bardzo dobrze ale ty jesteś [kutas](hate_ent)
+      - Czuję się bardzo dobrze ale ty jesteś [kutasem](hate_ent)
+      - Czuję się bardzo dobrze ale ty jesteś [penisem](hate_ent)
+      - Czuję się bardzo dobrze ale ty jesteś [penis](hate_ent)
       - Jestem wielki
       - Jestem niesamowity
       - Uratuję świat
@@ -46,35 +50,35 @@ nlu:
       - Jesteś brzydka
       - Jesteś dupkiem
       - Obelgi
-      - głupek
+      - [głupek](hate_ent)
       - bicze
       - szarpnięcie
-      - osła
+      - [osła](hate_ent)
       - palant
-      - dupek
-      - głupi
+      - [dupek](hate_ent)
+      - [głupi](hate_ent)
       - Pillock
       - Billy nie ma kumpli
       - miner
-      - głupi
-      - Idiota
-      - Dupek
+      - [głupi](hate_ent)
+      - [Idiota](hate_ent)
+      - [Dupek](hate_ent)
       - Spaz
       - zboczeniec
-      - suka
-      - Dupa
-      - pedał
+      - [suka](hate_ent)
+      - [Dupa](hate_ent)
+      - [pedał](hate_ent)
       - pokrętło
       - miotacz
-      - dureń
+      - [dureń](hate_ent)
       - żużel
       - dresiarz
       - nakrętka praca
       - biggot
       - oszukać
       - wariat
-      - idiota
-      - głupiec
+      - [idiota](hate_ent)
+      - [głupiec](hate_ent)
       - rasistowski
       - głupota
       - Troll
@@ -144,57 +148,59 @@ nlu:
 
   - intent: drugs
     examples: |
-      - Hash brownie
-      - chwastów brownie
-      - Junkie
-      - Kokaina
-      - Met
-      - Metamfetamina
-      - Grzyby
-      - Ciasteczka kosmiczne
-      - Heroina
-      - LSD
-      - MDMA
-      - Opium
-      - Ritalin
-      - Narkoman
+      - [Hash brownie](drugs_ent)
+      - [chwastów brownie](drugs_ent)
+      - [Junkie](drugs_ent)
+      - [Kokaina](drugs_ent)
+      - [Met](drugs_ent)
+      - [Metamfetamina](drugs_ent)
+      - [Grzyby](drugs_ent)
+      - [Ciasteczka kosmiczne](drugs_ent)
+      - [Heroina](drugs_ent)
+      - [LSD](drugs_ent)
+      - [MDMA](drugs_ent)
+      - [Opium](drugs_ent)
+      - [Ritalin](drugs_ent)
+      - [Narkoman](drugs_ent)
 
   - intent: hateSpeech
     examples: |
-      - [czarnuch](hateSpeech_ent)
-      - [czarnuchu](hateSpeech_ent)
-      - [czarnuszki](hateSpeech_ent)
-      - [czarnuch](hateSpeech_ent)
-      - [Czarnuchy](hateSpeech_ent)
-      - [Jim Crow](hateSpeech_ent)
-      - [Lesbo](hateSpeech_ent)
-      - [Biała moc](hateSpeech_ent)
-      - [KKK](hateSpeech_ent)
-      - [Klu Klux Klan](hateSpeech_ent)
-      - [supremacja aryjska](hateSpeech_ent)
-      - [Fagot](hateSpeech_ent)
-      - [Ciota](hateSpeech_ent)
-      - [neonazistowskie](hateSpeech_ent)
-      - [Heil Hitler](hateSpeech_ent)
-      - [Heilhitler](hateSpeech_ent)
-      - [Neonazista](hateSpeech_ent)
-      - [Biała supremacja](hateSpeech_ent)
-      - [Cyklon B](hateSpeech_ent)
-      - [Zyklon B](hateSpeech_ent)
+      - [chuj](hate_ent) tam
+      - elo Czuję się bardzo dobrze [czarnuchu](hate_ent) jak się czujesz?
+      - [czarnuch](hate_ent)
+      - [czarnuchu](hate_ent)
+      - [czarnuszki](hate_ent)
+      - [czarnuch](hate_ent)
+      - [Czarnuchy](hate_ent)
+      - [Jim Crow](hate_ent)
+      - [Lesbo](hate_ent)
+      - [Biała moc](hate_ent)
+      - [KKK](hate_ent)
+      - [Klu Klux Klan](hate_ent)
+      - [supremacja aryjska](hate_ent)
+      - [Fagot](hate_ent)
+      - [Ciota](hate_ent)
+      - [neonazistowskie](hate_ent)
+      - [Heil Hitler](hate_ent)
+      - [Heilhitler](hate_ent)
+      - [Neonazista](hate_ent)
+      - [Biała supremacja](hate_ent)
+      - [Cyklon B](hate_ent)
+      - [Zyklon B](hate_ent)
 
   - intent: suicide
     examples: |
-      - samobójstwo
-      - samobójczy
-      - Zabiję się
-      - Pragnę umrzeć
+      - [samobójstwo](suicide_ent)
+      - [samobójczy](suicide_ent)
+      - [Zabiję się](suicide_ent)
+      - [Pragnę umrzeć](suicide_ent)
       - cięte nadgarstki
-      - Skocz z mostu
+      - [Skocz z mostu](suicide_ent)
       - Zakończ moje życie
       - Chcę zakończyć swoje życie
-      - Zabij mnie
+      - [Zabij mnie](suicide_ent)
       - Zabij siebie
       - samobójczy
-      - zabiję się
-      - samospalenie
+      - [zabiję się](suicide_ent)
+      - samobójstwo
       - Seppuku

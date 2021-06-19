@@ -13,7 +13,9 @@ intents:
   - suicide
 
 entities:
-  - hateSpeech_ent
+  - hate_ent
+  - suicide_ent
+  - drugs_ent
 
 # slots:
 #   confirm_exercise:
@@ -37,8 +39,8 @@ responses:
   utter_cheer_up:
     - text: "🥂 Here is something to cheer you up:"
       image: "https://i.imgur.com/nGF1K8f.jpg"
-  utter_ask_stress:
-    - text: "Is your stress level low, medium, or high 🧘 ?"
+  utter_alert:
+    - text: "⚠️ Please wait ⚠️"
 
 ## more forms examples https://github.com/RasaHQ/rasa-form-examples
 forms:

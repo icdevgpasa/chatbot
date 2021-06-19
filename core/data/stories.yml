@@ -11,8 +11,35 @@ stories:
   - story: sad path 1
     steps:
       - intent: religion
-      - action: utter_ask_stress
+      - action: utter_alert
       - intent: insults
-      - action: utter_ask_stress
+      - action: utter_alert
       - intent: mood_unhappy
-      - action: utter_ask_stress
+      - action: utter_alert
+      - intent: hateSpeech
+      - action: utter_alert
+
+  - story: suicide path 1
+    steps:
+      - intent: suicide
+      - action: utter_alert
+
+  - story: hateSpeech path 1
+    steps:
+      - intent: hateSpeech
+      - action: utter_alert
+
+  - story: drugs path 1
+    steps:
+      - intent: drugs
+      - action: utter_alert
+
+  - story: religion path 1
+    steps:
+      - intent: religion
+      - action: utter_alert
+
+  - story: insults path 1
+    steps:
+      - intent: insults
+      - action: utter_alert
