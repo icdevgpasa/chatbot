@@ -75,6 +75,7 @@ def proccess_data(data=[]):
         logging.error(e)
         return data
 
+
 def save_to_cache(data):
     try:
         col_cache.insert_one(data)
@@ -82,7 +83,63 @@ def save_to_cache(data):
         logging.info('save_to_cache()')
         logging.info(e)
 
+
+def Average(lst):
+    return sum(lst) / len(lst)
+
+
+def hate_or_not(data):
+    try:
+        threshold = 0.70
+        pos_intent = ['mood_great']
+        minus_intent = ['mood_great', 'mood_unhappy', 'insults',
+                        'religion', 'drugs', 'hateSpeech', 'suicide']
+        minus_entity = ['hate_ent', 'suicide_ent', 'drugs_ent']
+
+        top_intent = data.get('intent', {})
+        top_intent_name = top_intent.get('name', '')
+        top_intent_confidence = top_intent.get('confidence', 0)
+        entities = data.get('entities', [])
+
+        if not top_intent:
+            print('[0]')
+            return {'hate_status': False}
+
+        if not top_intent and (len(entities) < 1):
+            print('[0]')
+            return {'hate_status': False}
+
+        if (top_intent_name in pos_intent) and (top_intent_confidence >= threshold) and (len(entities) < 1):
+            print('[1]')
+            return {'hate_status': False}
+
+        if (top_intent_name in pos_intent) and (len(entities) > 0):
+            print('[2]')
+            confidence = [e.get('confidence_entity', 0) for e in entities]
+            confidence.append(top_intent_confidence)
+            confidence = Average(confidence)
+            return {'hate_status': confidence > threshold}
+
+        if (top_intent_name in minus_intent) and (len(entities) > 0):
+            print('[3]')
+            confidence = [e.get('confidence_entity', 0) for e in entities]
+            confidence.append(top_intent_confidence)
+            confidence = Average(confidence)
+            return {'hate_status': confidence > threshold}
+
+        if (top_intent_name in minus_intent) and (top_intent_confidence >= threshold) and (len(entities) < 1):
+            print('[4]')
+            return {'hate_status': True}
+
+        return {'hate_status': True}
+    except Exception as e:
+        logging.error('hate_or_not(...)')
+        logging.error(res)
+        return {'hate_status': False}
+
 # ROUTES .....
+
+
 def ask_rasa(question):
     try:
         # url = 'http://localhost:5006/model/parse'  # @info : endpoint for another container
@@ -106,7 +163,8 @@ def ask_rasa(question):
             'intent': res.get('intent', {}),
             'entities': res.get('entities', {}),
             'intent_ranking': res.get('intent_ranking', {}),
-            'status': True
+            'status': True,
+            **hate_or_not(res)
         }
 
         logging.info('----------------------------------------------------')
@@ -124,7 +182,8 @@ def ask_rasa(question):
             'question': question,
             'intent': {},
             'entities': {},
-            'status': False
+            'status': False,
+            'hate_status': False
         }
 
 
@@ -155,12 +214,14 @@ def parse():
 
         # ...
         if res_:
+            d = hate_or_not(res_)
+            res_['hate_status']  = d['hate_status']
             logging.info('RESPONSE FROM DB')
             logging.info(res_)
             return success_handle(endpoint, {**res_, 'DB_STATUS': True})
 
         # ...
-        question =  request.get_json().get('text', '')
+        question = request.get_json().get('text', '')
         if question:
             res = ask_rasa(question)
             to_db = {**messages_[0], **res}
