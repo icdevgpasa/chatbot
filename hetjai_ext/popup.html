@@ -1,0 +1,149 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+<script src="popup.js"></script>
+<style type='text/css'>
+.off {
+  filter: grayscale(100%);
+}
+td {
+  width:49%;
+  text-align: center;
+}
+.type {
+  width:150px;
+}
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}</style>
+</head>
+<body style='width:500px; height:550px;'>
+    <h1 style='text-align:center;'>Hejt.ai - <span style='color:red;'>#Ogarnij_Hejt</span>
+        
+    </h1>
+    <h3 style='text-align:center'>Wybierz tryb ochrony przed Hejtem w sieci:</h3>
+    <table style='width:100%;'>
+      <tr><td>Tryb ochrony dziecka</td><td>Zgłaszaj hejt!</td></tr>
+        <tr>
+            <td>
+                <img id='imgkid' class='type' src='kid_on.png'/>
+            </td>
+            <td>
+              <img id='imgviki' class='type' src='viki_on.png'/>
+            
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <label class="switch">
+                <input id='kid' type="checkbox">
+                <span class="slider"></span>
+              </label>
+               
+            </td>
+            <td>
+                <label class="switch">
+                    <input id='fight' type="checkbox">
+                    <span class="slider"></span>
+                  </label>
+            
+            </td>
+        </tr>
+        <tr style='display:none;'>
+            <td>
+                Zabroń mi hejtować&nbsp;&nbsp;
+            </td>
+            <td>
+                <label class="switch">
+                    <input id='help' type="checkbox">
+                    <span class="slider"></span>
+                  </label>
+            
+            </td>
+        </tr>
+        <tr style='height:20px;'></tr>
+        <tr><td colspan=2><h3>Nie wierz który tryb wybrać? Kliknij <a href='#'>tutaj</a> aby dowiedzieć się więcej</h3></td></tr>
+        <tr style='height:10px;'></tr>
+        <tr>
+          <td colspan=2><strong>Statystyki</strong></td>
+        </tr>
+        <tr style='height:25px;'></tr>
+        <tr>
+          <td style='padding-left:20px; text-align:left;'>Zablokowanych treści:</td>
+          <td><strong>123</strong></td>
+
+        </tr>
+        <tr>
+          <td style='padding-left:20px; text-align:left;'>Blokowanych stron:</td>
+          <td><strong>38</strong></td>
+        </tr>
+        <tr>
+          <td style='padding-left:20px; text-align:left;'>Zaraportowanych treści:</td>
+          <td><strong>16</strong></td>
+        </tr>
+    </table>
+    
+
+
+    <div id='log'>
+        </div>
+</body>
+</html>
