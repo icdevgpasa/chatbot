@@ -131,7 +131,7 @@ def hate_or_not(data):
             print('[4]')
             return {'hate_status': True}
 
-        return {'hate_status': True}
+        return {'hate_status': False}
     except Exception as e:
         logging.error('hate_or_not(...)')
         logging.error(res)
